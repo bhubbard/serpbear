@@ -45,3 +45,4 @@ data/
 
 #copilot
 .github/*.md
+.wrangler/

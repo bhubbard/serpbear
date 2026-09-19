@@ -1,0 +1,55 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "serpbear-cf",
+  "main": "cloudflare/src/worker.ts",
+  "compatibility_date": "2026-08-18",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "cloudflare/public",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "html_handling": "auto-trailing-slash"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "serpbear_db",
+      "database_id": "serpbear-db",
+      "migrations_dir": "cloudflare/migrations"
+    }
+  ],
+  "queues": {
+    "producers": [
+      {
+        "binding": "SERP_QUEUE",
+        "queue": "serp-jobs"
+      }
+    ],
+    "consumers": [
+      {
+        "queue": "serp-jobs",
+        "max_batch_size": 10,
+        "max_batch_timeout": 5
+      }
+    ]
+  },
+  "kv_namespaces": [
+    {
+      "binding": "SERPBEAR_KV",
+      "id": "serpbear-kv"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "SERP_SNAPSHOTS",
+      "bucket_name": "serpbear-snapshots"
+    }
+  ],
+  "triggers": {
+    "crons": ["0 0 * * *", "0 * * * *"]
+  },
+  "vars": {
+    "NODE_ENV": "production",
+    "SECRET": "serpbear-edge-secret-2026"
+  }
+}

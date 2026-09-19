@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SerpBear Cloudflare</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      margin: 0;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .container {
+      max-width: 800px;
+      width: 100%;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      border-bottom: 1px solid #334155;
+      padding-bottom: 16px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 24px;
+      color: #38bdf8;
+    }
+    .badge {
+      background: #0284c7;
+      color: #fff;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-weight: 600;
+    }
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .endpoints {
+      font-family: monospace;
+      font-size: 13px;
+      line-height: 1.8;
+      background: #090d16;
+      padding: 16px;
+      border-radius: 6px;
+      border: 1px solid #334155;
+    }
+    .method {
+      color: #f59e0b;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>SerpBear Cloudflare</h1>
+      <span class="badge">Edge Rank Tracker</span>
+    </div>
+    <div class="card">
+      <p>Open-source search engine position tracking running natively on <strong>Cloudflare Workers</strong>, <strong>D1</strong>, <strong>Queues</strong>, and <strong>Cron Triggers</strong>.</p>
+      
+      <h3>Available APIs</h3>
+      <div class="endpoints">
+        <div><span class="method">GET</span> /healthz - Service Health Check</div>
+        <div><span class="method">GET</span> /api/domains - List Tracked Domains</div>
+        <div><span class="method">POST</span> /api/domains - Add New Domain</div>
+        <div><span class="method">GET</span> /api/keywords?domain=example.com - List Keywords</div>
+        <div><span class="method">POST</span> /api/keywords - Add Keywords to Domain</div>
+        <div><span class="method">POST</span> /api/refresh?domain=example.com - Enqueue Scrape Batch</div>
+        <div><span class="method">GET</span> /api/settings - Read Scraper & App Settings</div>
+        <div><span class="method">POST</span> /api/settings - Update Settings</div>
+        <div><span class="method">GET</span> /api/cron - Manual Cron Dispatch</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
